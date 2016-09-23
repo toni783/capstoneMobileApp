@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('mobileApp', ['ionic', 'mobileApp.controllers', 'mobileApp.services'])
+angular.module('mobileApp', ['ionic', 'ngCordova','mobileApp.controllers', 'mobileApp.services'])
 
     .run(function($ionicPlatform, $rootScope, $ionicLoading) {
     $ionicPlatform.ready(function() {
@@ -73,6 +73,28 @@ angular.module('mobileApp', ['ionic', 'mobileApp.controllers', 'mobileApp.servic
             }
         }
     })
+
+    .state('app.appointments', {
+    url: '/appointments',
+    views: {
+        'mainContent': {
+            templateUrl: 'templates/appointments.html',
+            controller: 'AppointmentController',
+            resolve:{
+                dish:['menuFactory',function(menuFactory){
+                    return menuFactory.get({id:0});
+                }],
+                promotion:['promotionFactory',function(promotionFactory){
+                    return promotionFactory.get({id:0});
+                }],
+                leader:['corporateFactory',function(corporateFactory){
+                    return corporateFactory.get({id:3});
+                }]
+
+            }
+        }
+    }
+})
 
         .state('app.aboutus', {
         url: '/aboutus',

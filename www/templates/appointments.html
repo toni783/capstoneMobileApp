@@ -1,0 +1,27 @@
+<ion-view view-title="Appointments">
+
+  <ion-content>
+
+    <label class="item item-input">
+  <i class="icon ion-search placeholder-icon"></i>
+  <input ng-model="searchDoc" type="search" placeholder="Search Your Doctor">
+</label>
+
+    <div class="card" ng-repeat="doctor in doctors | filter : searchDoc ">
+      <div class="item item-divider">
+        Doctor {{doctor.firstName}} {{doctor.lastName}}
+      </div>
+
+      <div class="item item-avatar">
+        <img src="avatar.jpg">
+        <h2>{{doctor.type}}</h2>
+        <p>{{doctor.company}}</p>
+        <a menu-close ng-click="register()" class="button button-small button-positive"><i class="icon ion-android-calendar"></i>Make Appointment</a>
+      </div>
+
+    </div>
+
+
+  </ion-content>
+
+</ion-view>

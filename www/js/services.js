@@ -2,6 +2,9 @@
 
 angular.module('mobileApp.services',['ngResource'])
     .constant("baseURL","http://localhost:3000/")
+
+
+
     .factory('menuFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
         return $resource(baseURL + "dishes/:id", null, {
@@ -29,6 +32,20 @@ angular.module('mobileApp.services',['ngResource'])
 
 
         return $resource(baseURL+"feedback/:id");
+
+    }])
+
+    .factory('appointmentFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+          var appointmentFac = {};
+        var doctors = [{
+          firstName:"John", lastName:"Doe", age:50, eyeColor:"blue",type:"cardiologist",company:"medic bay"
+        },
+        {
+          firstName:"erick", lastName:"steve", age:59, eyeColor:"yellow",type:"cardiologist",company:" bay madic"
+        }
+      ];
+
+        return doctors;
 
     }])
 

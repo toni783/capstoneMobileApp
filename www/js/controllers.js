@@ -100,6 +100,10 @@ angular.module('mobileApp.controllers', [])
     };
 })
 
+.controller('AppointmentController', ['$scope', 'appointmentFactory', function($scope,appointmentFactory) {
+    $scope.doctors = appointmentFactory;
+
+}])
 
     .controller('MenuController', ['$scope','dishes', 'favoriteFactory', 'baseURL','$localStorage', '$ionicListDelegate', function ($scope,dishes, favoriteFactory, baseURL,$localStorage, $ionicListDelegate) {
 

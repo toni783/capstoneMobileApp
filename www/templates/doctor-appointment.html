@@ -1,0 +1,28 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Make Appointment</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeAppointment()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form id="appointmentForm" name="appointmentForm" ng-submit="doAppointment()">
+      <div class="list">
+        
+
+        <label class="item item-input">
+          <span class="input-label">Date</span>
+          <input type="date" ng-model="reservation.date">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Time</span>
+          <input type="time" ng-model="reservation.time"
+           name="appointmenttime" min="11:00:00" max="21:00:00">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Make Appointment</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

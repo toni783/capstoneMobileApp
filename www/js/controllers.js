@@ -72,35 +72,40 @@ angular.module('mobileApp.controllers', [])
     };
 
     // Create the reserve modal that we will use later
-    $ionicModal.fromTemplateUrl('templates/reserve.html', {
+    $ionicModal.fromTemplateUrl('templates/doctor-appointment.html', {
         scope: $scope
     }).then(function(modal) {
         $scope.reserveform = modal;
     });
 
     // Triggered in the reserve modal to close it
-    $scope.closeReserve = function() {
+    $scope.closeAppointment = function() {
         $scope.reserveform.hide();
     };
 
     // Open the reserve modal
-    $scope.reserve = function() {
+    $scope.modalAppointment = function() {
         $scope.reserveform.show();
     };
 
     // Perform the reserve action when the user submits the reserve form
-    $scope.doReserve = function() {
-        console.log('Doing reservation', $scope.reservation);
+    $scope.doAppointment = function() {
+        console.log('Doing appointment', $scope.reservation);
 
         // Simulate a reservation delay. Remove this and replace with your reservation
         // code if using a server system
         $timeout(function() {
-            $scope.closeReserve();
+            $scope.closeAppointment();
         }, 1000);
     };
 })
 
 .controller('AppointmentController', ['$scope', 'appointmentFactory', function($scope,appointmentFactory) {
+    $scope.doctors = appointmentFactory;
+
+}])
+
+.controller('ProfileController', ['$scope', 'profileFactory', function($scope,appointmentFactory) {
     $scope.doctors = appointmentFactory;
 
 }])

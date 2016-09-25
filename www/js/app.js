@@ -96,77 +96,29 @@ angular.module('mobileApp', ['ionic', 'ngCordova','mobileApp.controllers', 'mobi
     }
 })
 
-        .state('app.aboutus', {
-        url: '/aboutus',
-        views: {
-            'mainContent': {
-                templateUrl: 'templates/aboutus.html',
-                controller:'AboutController',
-                resolve: {
-                    leaders:  ['corporateFactory', function(corporateFactory){
-                        return corporateFactory.query();
-                    }]
-                }
-            }
-        }
-    })
+.state('app.profile', {
+url: '/profile',
+views: {
+    'mainContent': {
+        templateUrl: 'templates/profile.html',
+        controller: 'ProfileController',
+        resolve:{
+            dish:['menuFactory',function(menuFactory){
+                return menuFactory.get({id:0});
+            }],
+            promotion:['promotionFactory',function(promotionFactory){
+                return promotionFactory.get({id:0});
+            }],
+            leader:['corporateFactory',function(corporateFactory){
+                return corporateFactory.get({id:3});
+            }]
 
-        .state('app.contactus', {
-        url: '/contactus',
-        views: {
-            'mainContent': {
-                templateUrl: 'templates/contactus.html'
-            }
         }
-    })
+    }
+}
+})
 
-        .state('app.favorites', {
-        url: '/favorites',
-        views: {
-            'mainContent': {
-                templateUrl: 'templates/favorites.html',
-                controller:'FavoritesController',
-                resolve: {
-                    dishes:  ['menuFactory', function(menuFactory){
-                        return menuFactory.query();
-                    }],
-                    favorites: ['favoriteFactory', function(favoriteFactory) {
-                        return favoriteFactory.getFavorites();
-                    }]
-                }
-            }
-        }
-    })
 
-        .state('app.dishdetails', {
-        url: '/menu/:id',
-        views: {
-            'mainContent': {
-                templateUrl: 'templates/dishdetail.html',
-                controller: 'DishDetailController',
-                resolve: {
-                    dish: ['$stateParams','menuFactory', function($stateParams, menuFactory){
-                        return menuFactory.get({id:parseInt($stateParams.id, 10)});
-                    }]
-                }
-            }
-        }
-    })
-
-        .state('app.menu', {
-        url: '/menu',
-        views: {
-            'mainContent': {
-                templateUrl: 'templates/menu.html',
-                controller: 'MenuController',
-                resolve: {
-                    dishes:  ['menuFactory', function(menuFactory){
-                        return menuFactory.query();
-                    }]
-                }
-            }
-        }
-    })
 
 
 
